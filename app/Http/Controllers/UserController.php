@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\UserModel;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -21,9 +20,11 @@ class UserController extends Controller
         }
 
         return response()->json([
+            'status' => 200,
+            'message' => "Ok",
             'success' => true,
             'data' => $user
-        ], 200);
+        ]);
     }
 
     public function addUser(Request $request)
