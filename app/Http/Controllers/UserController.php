@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -29,7 +30,7 @@ class UserController extends Controller
     {
         try {
             $request->validate([
-                'nik_user' => 'required|string|max:16|unique:USER',
+                'nik_user' => 'required|string|max:16',
                 'username_user' => 'required|string|max:50',
                 'password_user' => 'required|string|max:255',
                 'nama_lengkap_user' => 'required|string|max:100',
@@ -54,7 +55,7 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Terjadi kesalahan: ' . $e->getMessage(),
+                'message' => $e->getMessage(),
             ], 500);
         }
     }
